@@ -39,46 +39,71 @@
             height:80px;
             border:1px solid #ddd;
         }
+        .thumbnail-box li.active{
+            border-color: #f60;
+        }
         .thumbnail-box img{
             width:100%;
             height:100%;
         }
 
-        .mask{
+        div.zoomDiv{
+            z-index:999;
             position:absolute;
-            top:0;
-            left:0;
-            background:rgba(170, 228, 255, 0.651);
-            width:100px;
-            height:100px;
-            cursor:move;
+            top:50px;
+            left:501px;
+            width:500px;
+            height:500px;
+            background:#ffffff;
+            border:1px solid #CCCCCC;
+            display:none;
+            text-align:center;
+            overflow:hidden;
         }
     </style>
+    <script src="http://7.luochongfei.top/jquery.js"></script>
 </head>
 <body>
     <div class="origin-box">
-        <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117257122882.jpg" alt="">
-        <div class="mask"></div>
+        <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117257122882.jpg" rel="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/source-img/130651-1274.jpg" id="img1">
     </div>
+
+    <div class="zoomDiv" id="preview"></div>
+
     <ul class="thumbnail-box">
-        <li>
-            <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117257122882.jpg" 
-                data-origin-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/source-img/130651-1274.jpg" 
-                data-normal-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117257122882.jpg" 
+        <li class="active">
+            <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117257122882.jpg"
+                data-origin-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/source-img/130651-1274.jpg"
+                data-normal-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117257122882.jpg"
                 alt="" class="js-thumbnailItem">
         </li>
         <li>
-            <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/thumb-img/1508214117023949230.jpg" 
-                data-origin-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/source-img/130654-7757.jpg" 
-                data-normal-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117022307150.jpg" 
+            <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/thumb-img/1508214117023949230.jpg"
+                data-origin-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/source-img/130654-7757.jpg"
+                data-normal-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117022307150.jpg"
                 alt="" class="js-thumbnailItem">
         </li>
         <li>
-            <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/thumb-img/1508214117881147546.jpg" 
-                data-origin-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/source-img/130656-5649.jpg" 
-                data-normal-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117974871911.jpg" 
+            <img src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/thumb-img/1508214117881147546.jpg"
+                data-origin-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/source-img/130656-5649.jpg"
+                data-normal-src="https://gloimg.gbtcdn.com/gb/pdm-provider-img/straight-product-img/20171017/T009936/T0099360010/goods-img/1508214117974871911.jpg"
                 alt="" class="js-thumbnailItem">
         </li>
     </ul>
+
+    <script src="index.js"></script>
+    <script>
+        var imgs=document.querySelectorAll('.thumbnail-box img'),
+            img1=document.querySelector('#img1');
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].onmouseover = function () {
+                console.log(this)
+                img1.setAttribute('src', this.getAttribute('data-normal-src'));
+                img1.setAttribute('rel', this.getAttribute('data-origin-src'));
+            }
+        }
+
+        goodsMagnifier(document.getElementById('img1'));
+    </script>
 </body>
 </html>

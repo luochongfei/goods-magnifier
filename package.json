@@ -1,0 +1,20 @@
+{
+  "name": "goods-magnifier",
+  "version": "1.0.0",
+  "description": "产品图片放大镜",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luochongfei/goods-magnifier.git"
+  },
+  "author": "luochongfei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luochongfei/goods-magnifier/issues"
+  },
+  "homepage": "https://github.com/luochongfei/goods-magnifier#readme",
+  "devDependencies": {}
+}
